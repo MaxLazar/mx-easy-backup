@@ -2,14 +2,15 @@
 
 	if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+	require_once PATH_THIRD . 'mx_easy_backup/config.php';
+
 	/**
 	 * -
 	 * @package		MX Easy Backup
 	 * @subpackage	ThirdParty
 	 * @category	Modules
 	 * @author    Max Lazar <max@eec.ms>
-	 * @copyright Copyright (c) 2011 Max Lazar (http://eec.ms)
-	 * @Commercial - please see LICENSE file included with this distribution
+	 * @copyright Copyright (c) 2013 Max Lazar (http://eec.ms)
 	 * @link		http://eec.ms/
 	 */
 

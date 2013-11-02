@@ -2,14 +2,15 @@
 if (!defined('BASEPATH'))
 	exit('No direct script access allowed');
 
+require_once PATH_THIRD . 'mx_easy_backup/config.php';
+
 /**
  *
  * @package  MX Easy Backup
  * @subpackage ThirdParty
  * @category Modules
  * @author    Max Lazar <max@eec.ms>
- * @copyright Copyright (c) 2011 Max Lazar (http://eec.ms)
- * @Commercial - please see LICENSE file included with this distribution
+ * @copyright Copyright (c) 2013 Max Lazar (http://eec.ms)
  * @link  http://eec.ms/
  */
 
@@ -23,7 +24,7 @@ class Mx_easy_backup_mcp
 {
 	var $base; // the base url for this module
 	var $form_base; // base url for forms
-	var $module_name = "mx_easy_backup";
+	var $module_name = MX_EASY_BACKUP_KEY;
 	var $pro_mode = true;
 	var $settings = array();
 	var $CP = true;
@@ -32,7 +33,7 @@ class Mx_easy_backup_mcp
 	var $target_dir = '';
 	var $upload_list = array();
 	var $file_size = array();
-	var $errors = array('aws_errors' => false, 'rackspace_errors' => false, 'ftp_errors' => false, 'dropbox_errors' => false, 'other_errors' => false, 'message_failure' => false, 'message_success' => false);
+	var $errors = array('aws_errors' => false, 'rackspace_errors' => false, 'ftp_errors' => false, 's_errors' => false, 'other_errors' => false, 'message_failure' => false, 'message_success' => false);
 	var $time_web = 0;
 	var $method = 'none';
 	var $mysqldump_comm = "mysqldump";
@@ -262,15 +263,6 @@ class Mx_easy_backup_mcp
 			} elseif (!empty($this->settings['buckets_list'])) {
 				$vars['buckets'] = $this->array_to_select(explode(';', $this->settings['buckets_list']));
 			}
-
-			if (!empty($this->settings['rackspace_username']) and !empty($this->settings['rackspace_api_key']) and (isset($this->settings['rackspace_refresh']) or empty($this->settings['containers_list']))) {
-				$this->EE->load->library("rackspace", $this->settings);
-				$vars['containers']      = $this->EE->rackspace->bucket_list();
-				$vars['containers_list'] = ($vars['containers']) ? implode(';', $vars['containers']) : '';
-
-			} elseif (!empty($this->settings['containers_list'])) {
-				$vars['containers'] = $this->array_to_select(explode(';', $this->settings['containers_list']));
-			}
 		}
 
 		$vars['settings']['aws_refresh']       = null;
@@ -296,11 +288,6 @@ class Mx_easy_backup_mcp
 	function crypted_fields($obj, $way = "1")
 	{
 		$encrypted_fields = array(
-			"dropbox_password",
-			"dropbox_dropbox_key",
-			"dropbox_dropbox_secret",
-			"rackspace_api_key",
-			"rackspace_username",
 			"sftp_password",
 			"sftp_username",
 			"password",
@@ -438,12 +425,6 @@ class Mx_easy_backup_mcp
 		}
 		if (!empty($this->settings['username']) and !empty($this->settings['password']) and !empty($this->settings['host'])) {
 			$vars['send_to_list']['ftp_backup'] = $this->EE->lang->line('ftp');
-		}
-		if (!empty($this->settings['rackspace_username']) and !empty($this->settings['rackspace_api_key'])) {
-			$vars['send_to_list']['rackspace'] = $this->EE->lang->line('rackspace');
-		}
-		if (!empty($this->settings['dropbox_email']) and !empty($this->settings['dropbox_password'])) {
-			$vars['send_to_list']['dropbox'] = $this->EE->lang->line('dropbox');
 		}
 
 		if (!empty($this->settings['send_to_email_address'])) {
@@ -1364,6 +1345,5 @@ class Mx_easy_backup_mcp
 
 require_once PATH_THIRD . 'mx_easy_backup/libraries/misc/pclzip.lib.php';
 require_once PATH_THIRD . 'mx_easy_backup/libraries/db/dumper.php';
-
 /* End of file mcp.mx_easy_backup.php */
 /* Location: ./system/expressionengine/third_party/mx_easy_backup/mcp.mx_easy_backup.php */

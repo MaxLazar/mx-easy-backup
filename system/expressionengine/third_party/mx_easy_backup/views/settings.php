@@ -16,8 +16,6 @@
 	<span class="button"><a href="#aws" class="submit"><?php echo lang('aws')?></a></span>
 	<span class="button"><a href="#ftp" class="submit"><?php echo lang('ftp')?></a></span>
 	<span class="button"><a href="#sftp" class="submit"><?php echo lang('sftp')?></a></span>
-	<span class="button"><a href="#rackspace" class="submit"><?php echo lang('rackspace')?></a></span>
-	<span class="button"><a href="#dropbox" class="submit"><?php echo lang('dropbox')?></a></span>
 	<span class="button"><a href="#backup_to_email" class="submit"><?php echo lang('backup_to_email')?></a></span>
 	<?php endif; ?>
 	<span class="button"><a href="#notification" class="submit"><?php echo lang('notification')?></a></span>
@@ -190,76 +188,6 @@ if  (!$aws_errors) {
 
 </tbody>
 
-<tr class="header" id="rackspace">
-<th colspan="3"><?php echo lang('rackspace_settings')?></th>
-</tr>
-<tbody>
-
-<tr style="width: 33%;">
-
-<td><?php echo lang('username')?></td>
-<td><input dir="ltr" style="width: 100%;" name="<?php echo $input_prefix;?>[rackspace_username]" id="rackspace_username" value="<?php echo ((isset($settings['rackspace_username'])) ? $settings['rackspace_username'] : '' );?>" size="20" maxlength="256" class="input" type="text"></td>
-</tr>
-<tr style="width: 33%;">
-<td><?php echo lang('rackspace_api_key')?></td>
-<td><input dir="ltr" style="width: 100%;" name="<?php echo $input_prefix;?>[rackspace_api_key]" id="rackspace_api_key" value="<?php echo ((isset($settings['rackspace_api_key'])) ? $settings['rackspace_api_key'] : '' );?>" size="20" maxlength="256" class="input" type="text"></td>
-</tr>
-<tr style="width: 33%;">
-<td><?php echo lang('rackspace_container')?></td>
-<td>
- <?php
-if  (!$rackspace_errors) {
-	if  (isset($settings['rackspace_username']) and $settings['rackspace_api_key'] and $containers) {
-		print (form_dropdown($input_prefix.'[container]', $containers, ((isset($settings['container'])) ? $settings['container'] : '' ), 'id="id_bucket"').NBS.NBS.form_checkbox($input_prefix.'[rackspace_refresh]', 'yes', ((isset($settings['rackspace_refresh'])) ? $settings['rackspace_refresh'] : '' ), 'id="rackspace_refresh"').'<label for="rackspace_refresh">'.lang('refresh').'</label>');
-	}else{
-		print('<span class="go_notice">'.lang('rackspace_info').'</span>');
-	}
-
-}else {
-	print_r('<span class="go_notice">'.$rackspace_errors.'</span>');
-}
-?>
-<input type="hidden" name="<?php echo $input_prefix;?>[containers_list]" value="<?php echo $containers_list?>" /></td>
-</tr>
-<tr style="width: 33%;">
-<td><?php echo lang('backup_space')?></td>
-<td><input dir="ltr" style="width: 100%;" name="<?php echo $input_prefix;?>[rackspace_space]" id="rackspace_space" value="<?php echo ((isset($settings['rackspace_space'])) ? $settings['rackspace_space'] : '' );?>" size="20" maxlength="256" class="input" type="text"></td>
-</tr>
-</tbody>
-
-
-<tr class="header" id="dropbox">
-<th colspan="3"><?php echo lang('dropbox_settings')?><?php echo form_hidden($input_prefix.'[dropbox_enable]', 'ok')?></th>
-</tr>
-<tbody >
-<tr style="width: 33%;">
-
-<td><?php echo lang('email')?></td>
-<td><input dir="ltr" style="width: 100%;" name="<?php echo $input_prefix;?>[dropbox_email]" id="dropbox_email" value="<?php echo ((isset($settings['dropbox_email'])) ? $settings['dropbox_email'] : '' );?>" size="20" maxlength="256" class="input" type="text"></td>
-</tr>
-<tr style="width: 33%;">
-<td><?php echo lang('password')?></td>
-<td><input dir="ltr" style="width: 100%;" name="<?php echo $input_prefix;?>[dropbox_password]" id="dropbox_password" value="<?php echo ((isset($settings['dropbox_password'])) ? $settings['dropbox_password'] : '' );?>" size="20" maxlength="256" class="input" type="text"></td>
-</tr>
-
-	<tr style="width: 33%;">
-	<td><?php echo lang('dropbox_key')?></td>
-	<td><input dir="ltr" style="width: 100%;" name="<?php echo $input_prefix;?>[dropbox_key]" id="dropbox_dropbox_key" value="<?php echo ((isset($settings['dropbox_key'])) ? $settings['dropbox_key'] : '' );?>" size="20" maxlength="256" class="input" type="text"></td>
-	</tr>
-	<tr style="width: 33%;">
-	<td><?php echo lang('dropbox_secret')?></td>
-	<td><input dir="ltr" style="width: 100%;" name="<?php echo $input_prefix;?>[dropbox_secret]" id="dropbox_dropbox_secret" value="<?php echo ((isset($settings['dropbox_secret'])) ? $settings['dropbox_secret'] : '' );?>" size="20" maxlength="256" class="input" type="text"></td>
-	</tr>
-
-<tr style="width: 33%;">
-<td><?php echo lang('remotedir')?></td>
-<td><input dir="ltr" style="width: 100%;" name="<?php echo $input_prefix;?>[dropbox_remotedir]" id="dropbox_remotedir" value="<?php echo ((isset($settings['dropbox_remotedir'])) ? $settings['dropbox_remotedir'] : '' );?>" size="20" maxlength="256" class="input" type="text"></td>
-</tr>
-<tr style="width: 33%;">
-<td><?php echo lang('backup_space')?></td>
-<td><input dir="ltr" style="width: 100%;" name="<?php echo $input_prefix;?>[dropbox_space]" id="dropbox_space" value="<?php echo ((isset($settings['dropbox_space'])) ? $settings['dropbox_space'] : '' );?>" size="20" maxlength="256" class="input" type="text"></td>
-</tr>
-</tbody>
 
 <tr class="header"   id="backup_to_email">
 <th colspan="3"><?php echo lang('send_to_email')?></th>

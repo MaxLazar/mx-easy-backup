@@ -1,22 +1,20 @@
-# This addon is provided w/o any support!!
+# This addon is provided with community support only - you welcome to fork it and add or fix what you want!
 
 # MX Easy BackUp
 
-MX Easy BackUp simplifies the task of backing up your ExpressionEngine site. You can backup your DB, a system folder, custom files / directories and store it locally, remotely to [Amazon S3] / [Rackspace Cloud Files] / [DropBox] / SFTP / FTP / Email. It supports compression as well as methods of automatically scheduled backups. With MX Easy BackUp, it takes less than 1 min to backup your files before the next EE update.
+MX Easy BackUp simplifies the task of backing up your ExpressionEngine site. You can backup your DB, a system folder, custom files / directories and store it locally, remotely to [Amazon S3] /  SFTP / FTP / Email. It supports compression as well as methods of automatically scheduled backups. With MX Easy BackUp, it takes less than 1 min to backup your files before the next EE update.
 
 [Amazon S3]: http://aws.amazon.com/
-[Rackspace Cloud Files]: http://www.rackspacecloud.com/
-[DropBox]: http://db.tt/epdSBTq
 
 Requirements
 ---------------
 
 *  [ExpressionEngine 2][]
 *  PHP 5 >= 5.2.1 (safe_mode = off)
-*  DropBox, Rackspace, S3 - cURL PHP extension
+*  S3 - cURL PHP extension
 
 
-[ExpressionEngine 2]: http://expressionengine.com/index.php?affiliate=eecms
+[ExpressionEngine 2]: http://ellislab.com/
 
 Installation
 ---------------
@@ -120,18 +118,6 @@ Your password.
 ####Directory for backup files storage
 Directory on the server where backup files must be stored. 
 
-
-### Settings:Rackspace Cloud Files Settings
-####Username
-Rackspace username
-
-####API Key
-Rackspace API key
-
-####Container
-A container where backup files must be stored.
-
-
 ### Settings:Send back up to Email
 
 #### Email Address for backup
@@ -179,7 +165,7 @@ A path to the local directory where the backup archive will be stored.
 ### Backup Options
 
 ### Sent Files after Backup
-MX Easy BackUp can automatically send files to a remote server (FTP, SFTP, Amazon S3, Rackspace Cloud Files, Dropbox) or to an e-mail address. In this case, an original file in a local folder will be deleted. The list is based on your settings. Those methods without any settings will not be available for choosing.
+MX Easy BackUp can automatically send files to a remote server (FTP, SFTP, Amazon S3) or to an e-mail address. In this case, an original file in a local folder will be deleted. The list is based on your settings. Those methods without any settings will not be available for choosing.
 
 ### Optional files/dir for backup
 Here you should enter paths to optional files/directories you want to backup. 
@@ -204,28 +190,7 @@ Cron Setup
 
 		#wget cron example
 		0 13 * * * wget http://yourdomain.com/index.php?ACT=XX&task_id=1  
-		
-###You can also setup  task with Crontab
 
-		# execute Task 1  every day at 3am
-		00 03 * * * /your/path/to/php $HOME/system/expressionengine/third_party/addon_name/cron.addon_name.php 1
-  
-
-**If you are using a Unix server (or Unix variant, like Linux, OS X, FreeBSD, etc.) you must set cron.mx_easy_backup.php CHMOD to 755**
-
-		
-DropBox Support 
----------------
-
-For DropBox support you have to receive the developer key _(the limit implies 5000 calls per day)_.
-	
-### How to receive the DropBox Developer Key
-
-1.	Go to the [DropBox Developer page][]  and create a new application. 
-2.	Then take the App keys (Key & Secret) from the new app options. 
-	
-[DropBox Developer page]: https://www.dropbox.com/developers/apps
-	
 FAQ
 ---------------
 ### Q: How can I restore my backup in case of a disaster?
