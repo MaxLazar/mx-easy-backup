@@ -212,3 +212,7 @@ FAQ
  
  [Gmail Help] : http://mail.google.com/support/bin/answer.py?answer=6590
  
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/MaxLazar/mx-easy-backup/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
