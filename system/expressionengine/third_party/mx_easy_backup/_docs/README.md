@@ -1,4 +1,4 @@
-# This addon is provided with community support only - you welcome to fork it and add or fix what you want!
+
 
 # MX Easy BackUp
 
@@ -10,11 +10,17 @@ Requirements
 ---------------
 
 *  [ExpressionEngine 2][]
-*  PHP 5 >= 5.2.1 (safe_mode = off)
+*  PHP 5 >= 5.3 (safe_mode = off)
 *  S3 - cURL PHP extension
 
 
 [ExpressionEngine 2]: http://ellislab.com/
+
+
+Support
+---------------
+
+**I offer it to you, free of charge, but with no guarantee of support. Find something that's not working? Or could be improved? By all means, fix it! Submit a pull request, and I'll pull it into the project so everyone can benefit. But please, no hard feelings if I can't help you when it's not working. Go forth and Open Source.**
 
 Installation
 ---------------
@@ -48,7 +54,8 @@ This is the directory path you would like to backup
 
 **PHP** - performing backup/restore with the PHP method.
 
-**SYSTEM** - performing backup by means of mysqldump zip/gzip  system commands and restore with mysql command. At this moment, this method is available only for the *nix system, so if you have the Windows server, this option will be hidden.
+
+**SYSTEM** - performing backup by means of mysqldump zip/gzip  system commands and restore with mysql command. At this moment, this method is available only for the *nix system, so if you have the Windows server, this option will be hidden. 
 
 #### Archive type
 only fo **SYSTEM** method
@@ -154,6 +161,75 @@ Here is a template for your email. You can use the following tags in it:
 *	**{time}** - a backup time
 *	**{plan_name}** - a backup plan name
 
+Override Configuration
+----------------------
+
+$config['mx_easy_backup']['exclude_paths'] = array();
+$config['m62_backup']['allowed_access_levels'] = array();
+$config['m62_backup']['backup_file_location'] = array(realpath($_SERVER['DOCUMENT_ROOT']), "C:\ProjectFiles\mithra62\ee-addon-export"); 
+$config['m62_backup']['backup_store_location'] = realpath(dirname(realpath(__FILE__)).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'third_party'.DIRECTORY_SEPARATOR.'backup_proish'.DIRECTORY_SEPARATOR.'backups'); //if from within the config directory this should map to the backup_proish/backups directory 
+$config['m62_backup']['db_backup_method'] = 'mysqldump';
+$config['m62_backup']['db_restore_method'] = 'mysql';
+$config['m62_backup']['license_number'] = '';
+
+
+$config['mx_easy_backup']['backup_folder'] = array(realpath($_SERVER['DOCUMENT_ROOT']), "C:\ProjectFiles\mithra62\ee-addon-export"); 
+$config['mx_easy_backup']['default_task'][]
+$config['mx_easy_backup']['default_task']['exclude_paths'] = array();
+$config['mx_easy_backup']['default_task']['include_paths'] = array();
+$config['mx_easy_backup']['default_task']['sent_notification'] = 'y';
+$config['mx_easy_backup']['default_task']['default_key'] = '528e152804323';
+
+
+
+
+$config['m62_backup']['allowed_access_levels'] = array();
+$config['m62_backup']['auto_threshold'] = '0';
+$config['m62_backup']['backup_file_location'] = array(realpath($_SERVER['DOCUMENT_ROOT']), "C:\ProjectFiles\mithra62\ee-addon-export"); 
+$config['m62_backup']['backup_store_location'] = realpath(dirname(realpath(__FILE__)).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'third_party'.DIRECTORY_SEPARATOR.'backup_proish'.DIRECTORY_SEPARATOR.'backups'); //if from within the config directory this should map to the backup_proish/backups directory 
+$config['m62_backup']['db_backup_method'] = 'mysqldump';
+$config['m62_backup']['db_restore_method'] = 'mysql';
+$config['m62_backup']['license_number'] = '';
+
+
+
+//general
+$config['mx_easy_backup']['exclude_paths'] = array();
+$config['mx_easy_backup']['allowed_access_levels'] = array();
+$config['mx_easy_backup']['auto_threshold'] = '0';
+$config['mx_easy_backup']['backup_file_location'] = array(realpath($_SERVER['DOCUMENT_ROOT']), "C:\ProjectFiles\mithra62\ee-addon-export"); 
+$config['mx_easy_backup']['backup_store_location'] = realpath(dirname(realpath(__FILE__)).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'third_party'.DIRECTORY_SEPARATOR.'backup_proish'.DIRECTORY_SEPARATOR.'backups'); //if from within the config directory this should map to the backup_proish/backups directory 
+$config['mx_easy_backup']['db_backup_method'] = 'mysqldump';
+$config['mx_easy_backup']['db_restore_method'] = 'mysql';
+$config['mx_easy_backup']['license_number'] = '';
+ 
+//setup cron
+$config['m62_backup']['cron_notify_emails'] = array('eric@mithra62.com', 'eric@ericlamb.net'); //change these <img src="http://www.mithra62.com/images/smileys/smile.gif" width="19" height="19" alt="smile" style="border:0;" />
+$config['m62_backup']['cron_attach_backups'] = '0';
+$config['m62_backup']['cron_attach_threshold'] = '0';
+ 
+//setup FTP
+$config['mx_easy_backup']['ftp_hostname'] = '';
+$config['mx_easy_backup']['ftp_username'] = ''; 
+$config['mx_easy_backup']['ftp_password'] = '0';
+$config['mx_easy_backup']['ftp_port'] = '21';
+$config['mx_easy_backup']['ftp_passive'] = '0';
+$config['mx_easy_backup']['ftp_store_location'] = '';
+
+//setup SFTP
+$config['mx_easy_backup']['ftp_hostname'] = '';
+$config['mx_easy_backup']['ftp_username'] = ''; 
+$config['mx_easy_backup']['ftp_password'] = '0';
+$config['mx_easy_backup']['ftp_port'] = '22';
+$config['mx_easy_backup']['ftp_passive'] = '0';
+$config['mx_easy_backup']['ftp_store_location'] = '';
+ 
+//setup S3
+$config['mx_easy_backup']['s3_access_key'] = '';
+$config['mx_easy_backup']['s3_secret_key'] = '';
+$config['mx_easy_backup']['s3_bucket'] = '';
+
+
 Backup Plan Settings
 ---------------
 ### Name for a Backup Plan
@@ -169,9 +245,6 @@ MX Easy BackUp can automatically send files to a remote server (FTP, SFTP, Amazo
 
 ### Optional files/dir for backup
 Here you should enter paths to optional files/directories you want to backup. 
-
-### Choose tables for DB dump
-If you don't need to backup a full DB, you can choose separate tables. 
 
 ### Backup type
 Full or Differential

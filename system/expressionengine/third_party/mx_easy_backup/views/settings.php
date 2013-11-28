@@ -10,7 +10,7 @@
 
 
 <?php echo form_open($_form_base."&method=settings", array('name'=>'backupsettings', 'id'=>'backupsettings'), '')?> <!-- -->
-<div style="float: left; ">
+<div style="float: left; " id="umenu">
 	<span class="button"><a href="#backup_options" class="submit"><?php echo lang('backup_options')?></a></span>
 	<?php if($pro_mode && $encryption_key) : ?>
 	<span class="button"><a href="#aws" class="submit"><?php echo lang('aws')?></a></span>
@@ -309,3 +309,26 @@ if  (!$aws_errors) {
 	});
 
 	</script>
+
+<style>
+	#umenu span.current a, #umenu span a:hover {
+	    color: #fff;
+	    font-weight: bold;
+	    background: #27343C;
+	    text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+	    box-shadow: rgba(0,0,0,0.2) 0 1px 0 0 inset;
+	}
+
+	#umenu span a {
+	    background: #ABB7C3;
+	    color: #fff;
+	    font-size: 11px;
+	    font-weight: bold;
+	    margin: 3px 7px 0 0;
+	    padding: 5px 10px 5px 10px;
+	    display: block;
+	    text-decoration: none;
+	    text-transform: uppercase;
+	    border-radius: 5px;
+	}
+</style>

@@ -75,7 +75,7 @@
 <th colspan="3">
 <?=form_checkbox($input_prefix.'[optional_files]', 'yes', ((isset($settings['optional_files'])) ? $settings['optional_files'] : '' ), 'id="optional_files_id" class="c_toogle" rel="optional_files_table"').NBS.NBS?><label for="optional_files_id"><?=lang('files_for_backup')?></label></th>
 </tr>
-<tbody  id="optional_files_table" <?=((isset($settings['optional_files'])) ? "" : "style='display:none'" )?>>
+<tbody  id="optional_files_table" <?=((isset($settings['optional_files'])) ? "" : "" )?>>
 <tr>
 <td colspan="3"  class="alert info"><strong><?=lang('include_files')?></strong></td>
 </tr>
@@ -94,44 +94,6 @@
 
 </tbody>
 
-<tr class="header" >
-<th colspan="3"><?=form_checkbox($input_prefix.'[c_tables]', 'true', ((isset($settings['c_tables'])) ? true : false ), 'id="customize_sql" class="c_toogle" rel="mysql_table"').NBS.NBS?><label for="customize_sql"><?=lang('sql_choose_tables')?></label></th>
-</tr>
-<tbody id="mysql_table" <?=((isset($settings['c_tables'])) ? "" : "style='display:none'" )?>>
-<tr>
-<td colspan="3">
-	<?php
-					$this->table->set_template($cp_pad_table_template);
-					$this->table->set_heading(
-												array('data' => form_checkbox('select_all', 'true', FALSE, 'class="toggle_all"'), 'width' => '4%'),
-												array('data' => lang('task_name'), 'width' => '45%'),
-												lang('database_records'),
-												lang('size')
-											);
-
-					foreach ($sql_table['status'] as $table)
-					{
-						$this->table->add_row(
-												'<input class="toggle" type="checkbox" name="'.$input_prefix.'[db]['.$table['name'].']" value="'.$table['name'].'"  '. ((isset($settings['db'][$table['name']])) ? " checked='checked'" : "" ).'/>',
-												"<strong>{$table['name']}</strong>",
-												$table['rows'],
-												$table['size']
-											);
-
-					}
-						
-
-					
-					$this->table->add_row(
-											form_checkbox('select_all', 'true', FALSE, 'class="toggle_all"'),
-											array('data' => lang('select_all'), 'colspan' => 4)
-										);
-				?>
-				
-				<?=$this->table->generate()?>
-</td>		
-</tr>
-</tbody>
 </table>
 
 

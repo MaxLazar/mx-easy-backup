@@ -33,8 +33,8 @@
 													$task_settings['task_name'],
 													"<strong>".$this->localize->format_date($datestr, $row->last_run, TRUE)."</strong>",
 													lang($task_settings['send_to']),
-													'<span class="button"><a title="'.lang('edit').'" class="submit" href="'.$_base.'&method=task&task_id='.$row->task_id.'">'.lang('edit').'</a></span>',
-													'<span class="button"><a title="'.lang('run').'" class="submit runtask" href="'.$_base.'&method=make_backup&task_id='.$row->task_id.'">'.lang('run').'</a></span>'
+													'<div id="umenu"><span class="button"><a title="'.lang('edit').'" class="submit" href="'.$_base.'&method=task&task_id='.$row->task_id.'">'.lang('edit').'</a></span></div>',
+													'<div id="umenu"><span class="button"><a title="'.lang('run').'" class="submit runtask" href="'.$_base.'&method=make_backup&task_id='.$row->task_id.'">'.lang('run').'</a></span></div>'
 												);
 										
 						}
@@ -50,8 +50,8 @@
 				?>
 				
 				<div class=" shun"><?=$this->table->generate()?></div>
-				<?=form_submit(array('name' => 'submit', 'value' => lang('delete'), 'class' => 'submit'))?>
-				<span class="button" style="float:right;"><a href="<?=$_base?>&method=task" class="submit"><?=lang('create_task') ?></a></span>
+				<div id="umenu"><?=form_submit(array('name' => 'submit', 'value' => lang('delete'), 'class' => 'submit'))?>
+				<span class="button" style="float:right;"><a href="<?=$_base?>&method=task" class="submit"><?=lang('create_task') ?></a></span></div>
 
 				<?=form_close()?>
 </div>
@@ -85,3 +85,26 @@
 			}); 
 		});
 </script>	
+
+<style>
+	#umenu span a:hover {
+	    color: #fff;
+	    font-weight: bold;
+	    background: #27343C;
+	    text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+	    box-shadow: rgba(0,0,0,0.2) 0 1px 0 0 inset;
+	}
+
+	#umenu span a {
+	    background: #ABB7C3;
+	    color: #fff;
+	    font-size: 11px;
+	    font-weight: bold;
+	    margin: 3px 7px 0 0;
+	    padding: 5px 10px 5px 10px;
+	    display: block;
+	    text-decoration: none;
+	    text-transform: uppercase;
+	    border-radius: 5px;
+	}
+</style>

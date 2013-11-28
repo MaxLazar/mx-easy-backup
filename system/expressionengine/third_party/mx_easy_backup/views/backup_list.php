@@ -39,8 +39,8 @@
 													$row->time.lang('second'),
 													lang($row->method),
 													$row->type,
-													(($row->method == 'email_backup' ) ? '' :  '<span class="button"><a title="'.lang('restore').'" class="submit" href="'.$_base.'&method='.(($row->type != 'db') ?  'restore_files' : 'restore_db').'&backup_id='.$row->backup_id.'">'.lang('restore').'</a></span>'),
-													(($row->method != "email_backup") ? '<span class="button"><a title="'.lang('download').'"  href="'.$_base.'&method=download&backup_id='.$row->backup_id.'" class="submit">'.lang('download').'</a></span>' : '')
+													(($row->method == 'email_backup' ) ? '' :  '<div id="umenu"><span class="button"><a title="'.lang('restore').'" class="submit" href="'.$_base.'&method='.(($row->type != 'db') ?  'restore_files' : 'restore_db').'&backup_id='.$row->backup_id.'">'.lang('restore').'</a></span></div>'),
+													(($row->method != "email_backup") ? '<div id="umenu"><span class="button"><a title="'.lang('download').'"  href="'.$_base.'&method=download&backup_id='.$row->backup_id.'" class="submit">'.lang('download').'</a></span></div>' : '')
 												);
 
 						}
@@ -58,3 +58,26 @@
 				<?=form_close()?>
 
 </div>
+
+<style>
+	#umenu span a:hover {
+	    color: #fff;
+	    font-weight: bold;
+	    background: #27343C;
+	    text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+	    box-shadow: rgba(0,0,0,0.2) 0 1px 0 0 inset;
+	}
+
+	#umenu span a {
+	    background: #ABB7C3;
+	    color: #fff;
+	    font-size: 11px;
+	    font-weight: bold;
+	    margin: 3px 7px 0 0;
+	    padding: 5px 10px 5px 10px;
+	    display: block;
+	    text-decoration: none;
+	    text-transform: uppercase;
+	    border-radius: 5px;
+	}
+</style>

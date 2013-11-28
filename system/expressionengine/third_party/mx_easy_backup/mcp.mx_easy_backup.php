@@ -639,7 +639,7 @@ class Mx_easy_backup_mcp
 				"size" => $this->EE->mx_common->format_size($email_size),
 				"filename" => $email_filename,
 				"plan_id" => $task_id,
-				"data" => $this->EE->localize->format_date((($this->settings['date_fmt'] == 'us') ? '%m/%d/%y %h:%i %a' : '%Y-%m-%d %H:%i'), $timestamp, TRUE),
+				"data" => $this->EE->localize->decode_date((($this->settings['date_fmt'] == 'us') ? '%m/%d/%y %h:%i %a' : '%Y-%m-%d %H:%i'), $timestamp, TRUE),
 				"time" => $email_time,
 				"plan_name" => $task_settings['task_name']
 			);
@@ -970,7 +970,7 @@ class Mx_easy_backup_mcp
 		if ($method == 'php') {
 			$bk_filename = $bk_filename . '.zip';
 
-		//	$tables_e = null;
+			$tables_e = null;
 			
 		//	$tables_e[$dbprefix."mx_easy_backup"] = $dbprefix."mx_easy_backup";
 		//	$tables_e[$dbprefix."mx_easy_backup_tasks"] = $dbprefix."mx_easy_backup_tasks";

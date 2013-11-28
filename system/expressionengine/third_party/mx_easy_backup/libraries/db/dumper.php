@@ -240,7 +240,7 @@ class Dumper_Decorator
         if($this->sxd->try) return;
         if(strpos($errmsg, 'timezone settings')) return;
         $errortype = array(1 => 'Error', 2 => 'Warning', 4 => 'Parsing Error', 8 => 'Notice', 16 => 'Core Error', 32 => 'Core Warning', 64 => 'Compile Error', 
-                           128 => 'Compile Warning', 256 => 'MySQL Error', 512 => 'Warning', 1024 => 'Notice');
+                           128 => 'Compile Warning', 256 => 'MySQL Error', 512 => 'Warning', 1024 => 'Notice', 8192 => 'na');
         $str = "{$errortype[$errno]}: {$errmsg} ({$filename}:{$linenum})";
         if(SXD_DEBUG) error_log("[index.php]\n{$str}\n", 3, "error.log");
 

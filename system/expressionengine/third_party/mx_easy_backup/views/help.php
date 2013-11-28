@@ -127,4 +127,24 @@ echo '</p></div>';
 .help h3, .help h4 {padding:5px 0 5px 5px;}
 .help p{ padding: 0 0 10px 15px;}
 .help code {overflow-x:hide;}
+	#umenu span.current a, #umenu span a:hover {
+	    color: #fff;
+	    font-weight: bold;
+	    background: #27343C;
+	    text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+	    box-shadow: rgba(0,0,0,0.2) 0 1px 0 0 inset;
+	}
+
+	#umenu span a {
+	    background: #ABB7C3;
+	    color: #fff;
+	    font-size: 11px;
+	    font-weight: bold;
+	    margin: 3px 7px 0 0;
+	    padding: 5px 10px 5px 10px;
+	    display: block;
+	    text-decoration: none;
+	    text-transform: uppercase;
+	    border-radius: 5px;
+	}
 </style>
