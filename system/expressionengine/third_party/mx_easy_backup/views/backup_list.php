@@ -32,7 +32,7 @@
 							$this->table->add_row(
 													'<input class="toggle" type="checkbox" name="toggle[]" value="'.$row->backup_id.'"  />',
 													$tasks_list[$row->task_id],
-													'<strong>'.$this->localize->format_date($datestr, $row->date, TRUE).'</strong>',
+													'<strong>'.$this->localize->decode_date($datestr, $row->date, TRUE).'</strong>',
 												
 													$row->backup_name,
 													$this->mx_common->format_size($row->size),
