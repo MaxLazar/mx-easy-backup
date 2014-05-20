@@ -31,7 +31,7 @@
 							$this->table->add_row(
 													'<input class="toggle" type="checkbox" name="toggle[]" value="'.$row->task_id.'"  />',
 													$task_settings['task_name'],
-													"<strong>".$this->localize->decode_date($datestr, $row->last_run, TRUE)."</strong>",
+													"<strong>".$this->localize->format_date($datestr, $row->last_run, TRUE)."</strong>",
 													lang($task_settings['send_to']),
 													'<div id="umenu"><span class="button"><a title="'.lang('edit').'" class="submit" href="'.$_base.'&method=task&task_id='.$row->task_id.'">'.lang('edit').'</a></span></div>',
 													'<div id="umenu"><span class="button"><a title="'.lang('run').'" class="submit runtask" href="'.$_base.'&method=make_backup&task_id='.$row->task_id.'">'.lang('run').'</a></span></div>'
