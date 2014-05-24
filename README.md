@@ -1,5 +1,9 @@
 # This addon is provided with community support only - you welcome to fork it and add or fix what you want!
 
+# Use [expressionengine.stackexchange.com] for support
+
+[expressionengine.stackexchange.com]:http://expressionengine.stackexchange.com/
+
 # MX Easy BackUp
 
 MX Easy BackUp simplifies the task of backing up your ExpressionEngine site. You can backup your DB, a system folder, custom files / directories and store it locally, remotely to [Amazon S3] /  SFTP / FTP / Email. It supports compression as well as methods of automatically scheduled backups. With MX Easy BackUp, it takes less than 1 min to backup your files before the next EE update.
@@ -211,8 +215,4 @@ FAQ
 *	2. You can send and receive messages up to 25 megabytes (MB) total (including attachments). Any message that exceeds this limit will not be delivered to your inbox and will be returned to the sender.
  
  [Gmail Help] : http://mail.google.com/support/bin/answer.py?answer=6590
- 
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/MaxLazar/mx-easy-backup/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 

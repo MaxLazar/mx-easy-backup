@@ -1,5 +1,10 @@
 # Changelog 
 
+1.4
+May 22 2014
+* tested with last EE version
+* s3 lib update
+
 1.3
 Sep 22 2013
 * rockspace & dropbox was removed
