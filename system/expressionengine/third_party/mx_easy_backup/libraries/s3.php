@@ -21,6 +21,7 @@ class s3
 		
 		$this->EE =& get_instance();
 		$this->connection = new  S3_SDK($this->aws_access_key, $this->aws_secret_key);
+
 		
 	}
 	
@@ -77,10 +78,11 @@ class s3
 	{
         foreach ($object as $filename => $filesize) {
 			$this->EE->benchmark->mark('tmp_backup_start');
-			
+		//	S3::putObject(S3::inputFile($file, false), $bucketName, $uploadName, S3::ACL_PUBLIC_READ)
+
 			if (!$this->connection->putObjectFile($path . $filename, $this->bucket, $filename, S3_SDK::ACL_PRIVATE))
 			{
-			 echo "error";
+			 echo "error::";
 			 die();
 			}
 			
