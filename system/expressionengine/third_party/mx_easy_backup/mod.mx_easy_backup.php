@@ -10,7 +10,7 @@
 	 * @subpackage	ThirdParty
 	 * @category	Modules
 	 * @author    Max Lazar <max@eec.ms>
-	 * @copyright Copyright (c) 2013 Max Lazar (http://eec.ms)
+	 * @copyright Copyright (c) 2011-2013 Max Lazar (http://eec.ms)
 	 * @link		http://eec.ms/
 	 */
 
@@ -32,7 +32,9 @@
 				if ($backup->make_backup($task_id, false)) {
 					$this->EE->output->_display("OK".$task_id);
 				}else {
-					$this->EE->output->_display("ERROR");
+					header('HTTP/1.0 403 Forbidden');
+					echo 'The specified task does not exist ';
+					die();
 				};
 				exit;
 		}
